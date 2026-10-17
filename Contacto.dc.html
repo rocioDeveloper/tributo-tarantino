@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Corben:wght@400;700&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<style>
+html,body{margin:0;background:#F0B31A;color:#0E0B0A;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#E8171B;text-decoration:none}
+a:hover{color:#0E0B0A}
+::selection{background:#E8171B;color:#F6F1E7}
+input::placeholder,textarea::placeholder{color:#7a5a12}
+</style>
+</helmet>
+
+<nav style="position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:16px 40px;background:#0E0B0A;border-bottom:3px solid #E8171B">
+  <a href="Principal.dc.html" style="font:700 22px 'Corben',serif;color:#F0B31A">Q.T.</a>
+  <div style="display:flex;gap:28px;font:400 15px 'Anton',sans-serif;letter-spacing:.12em;text-transform:uppercase">
+    <a href="Principal.dc.html" style="color:#F6F1E7">Principal</a>
+    <a href="Biblioteca.dc.html" style="color:#F6F1E7">Biblioteca</a>
+    <a href="Contacto.dc.html" style="color:#F6F1E7;border-bottom:2px solid #F0B31A">Contacto</a>
+  </div>
+</nav>
+
+<main data-screen-label="Contacto" style="min-height:100vh;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))">
+  <section style="background:#E8171B;padding:130px 40px 48px;display:flex;flex-direction:column;justify-content:space-between;gap:48px">
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <div data-in style="font:700 13px 'Courier Prime',monospace;letter-spacing:.25em;text-transform:uppercase;color:#0E0B0A">Capítulo final</div>
+      <h1 style="margin:0;font:700 clamp(64px,9vw,150px)/.86 'Corben',serif;color:#F0B31A;text-shadow:6px 6px 0 #0E0B0A;text-transform:uppercase">
+        <div style="overflow:hidden;padding-bottom:.06em"><div data-rise>Hable</div></div>
+        <div style="overflow:hidden;padding-bottom:.06em"><div data-rise>mos.</div></div>
+      </h1>
+    </div>
+    <div data-in style="display:flex;flex-direction:column;gap:10px;font:400 18px/1.5 'Courier Prime',monospace;color:#0E0B0A;max-width:420px">
+      <span>Colaboraciones, correcciones de datos o tu escena favorita. Respondemos en 48 horas.</span>
+      <a href="mailto:hola@tarantinofans.example" style="font:700 20px 'Courier Prime',monospace;color:#F6F1E7">hola@tarantinofans.example</a>
+    </div>
+  </section>
+
+  <section style="background:#F0B31A;padding:130px 40px 48px;display:flex;flex-direction:column;justify-content:center">
+    <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+      <form onSubmit="{{ submit }}" style="display:flex;flex-direction:column;gap:28px;max-width:560px;width:100%">
+        <label data-in style="display:flex;flex-direction:column;gap:8px;font:700 12px 'Courier Prime',monospace;letter-spacing:.25em;text-transform:uppercase">Nombre
+          <input required="required" name="nombre" placeholder="Mr. Pink" style="background:transparent;border:0;border-bottom:3px solid #0E0B0A;padding:10px 0;font:400 28px 'Anton',sans-serif;color:#0E0B0A;outline:none;text-transform:uppercase" style-focus="border-bottom-color:#E8171B">
+        </label>
+        <label data-in style="display:flex;flex-direction:column;gap:8px;font:700 12px 'Courier Prime',monospace;letter-spacing:.25em;text-transform:uppercase">Email
+          <input required="required" type="email" name="email" placeholder="tu@correo.com" style="background:transparent;border:0;border-bottom:3px solid #0E0B0A;padding:10px 0;font:400 22px 'Courier Prime',monospace;color:#0E0B0A;outline:none" style-focus="border-bottom-color:#E8171B">
+        </label>
+        <div data-in style="display:flex;flex-direction:column;gap:12px;font:700 12px 'Courier Prime',monospace;letter-spacing:.25em;text-transform:uppercase">Tu película favorita
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            <sc-for list="{{ films }}" as="f" hint-placeholder-count="9">
+              <button type="button" data-film="{{ f.t }}" onClick="{{ pick }}" style="border:2px solid #0E0B0A;background:{{ f.bg }};color:{{ f.fg }};padding:8px 12px;font:400 14px 'Anton',sans-serif;letter-spacing:.06em;text-transform:uppercase;cursor:pointer">{{ f.t }}</button>
+            </sc-for>
+          </div>
+        </div>
+        <label data-in style="display:flex;flex-direction:column;gap:8px;font:700 12px 'Courier Prime',monospace;letter-spacing:.25em;text-transform:uppercase">Mensaje
+          <textarea required="required" name="mensaje" rows="4" placeholder="Escribe aquí…" style="background:transparent;border:3px solid #0E0B0A;padding:14px;font:400 18px/1.45 'Courier Prime',monospace;color:#0E0B0A;outline:none;resize:vertical" style-focus="border-color:#E8171B"></textarea>
+        </label>
+        <button data-in type="submit" style="align-self:flex-start;background:#0E0B0A;color:#F0B31A;border:0;padding:18px 32px;font:700 22px 'Corben',serif;text-transform:uppercase;cursor:pointer;box-shadow:6px 6px 0 #E8171B" style-hover="background:#E8171B;color:#F6F1E7;box-shadow:6px 6px 0 #0E0B0A">Enviar →</button>
+      </form>
+    </sc-if>
+    <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+      <div data-sent style="display:flex;flex-direction:column;gap:20px;max-width:560px">
+        <div style="font:700 13px 'Courier Prime',monospace;letter-spacing:.25em;text-transform:uppercase">Mensaje recibido</div>
+        <div style="font:700 clamp(48px,6vw,96px)/.9 'Corben',serif;color:#0E0B0A;text-transform:uppercase">The end.</div>
+        <p style="margin:0;font:400 18px/1.5 'Courier Prime',monospace">Gracias, {{ name }}. Te escribiremos pronto.</p>
+        <button onClick="{{ reset }}" style="align-self:flex-start;background:none;border:0;border-bottom:2px solid #0E0B0A;padding:4px 0;font:700 14px 'Courier Prime',monospace;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;color:#0E0B0A">Enviar otro</button>
+      </div>
+    </sc-if>
+  </section>
+</main>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const TITLES = ['Reservoir Dogs', 'Pulp Fiction', 'Jackie Brown', 'Kill Bill', 'Death Proof', 'Inglourious Basterds', 'Django Unchained', 'The Hateful Eight', 'Once Upon a Time in Hollywood'];
+class Component extends DCLogic {
+  state = { fav: 'Pulp Fiction', sent: false, name: '' };
+  componentDidMount() {
+    this.wait = setInterval(() => {
+      if (!window.gsap) return; clearInterval(this.wait);
+      const g = window.gsap;
+      g.from('[data-rise]', { yPercent: 110, duration: 1, stagger: .1, ease: 'power4.out' });
+      g.from('[data-in]', { y: 30, opacity: 0, duration: .8, stagger: .07, ease: 'power3.out', delay: .3 });
+    }, 60);
+  }
+  componentWillUnmount() { clearInterval(this.wait); }
+  componentDidUpdate(_, ps) { if (!ps.sent && this.state.sent && window.gsap) window.gsap.from('[data-sent] > *', { y: 40, opacity: 0, stagger: .1, duration: .7, ease: 'power3.out' }); }
+  renderVals() {
+    return {
+      films: TITLES.map(t => ({ t, bg: t === this.state.fav ? '#0E0B0A' : 'transparent', fg: t === this.state.fav ? '#F0B31A' : '#0E0B0A' })),
+      pick: e => this.setState({ fav: e.currentTarget.getAttribute('data-film') }),
+      submit: e => { e.preventDefault(); const n = new FormData(e.currentTarget).get('nombre'); this.setState({ sent: true, name: n }); },
+      reset: () => this.setState({ sent: false }),
+      sent: this.state.sent, notSent: !this.state.sent, name: this.state.name
+    };
+  }
+}
+
+</script>
+</body>
+</html>

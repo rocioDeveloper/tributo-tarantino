@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Corben:wght@400;700&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<style>
+html,body{margin:0;background:#E8171B;color:#0E0B0A;-webkit-font-smoothing:antialiased;overflow-x:clip;height:auto}
+*{box-sizing:border-box}
+a{color:#F0B31A;text-decoration:none}
+a:hover{color:#F6F1E7}
+::selection{background:#F0B31A;color:#0E0B0A}
+</style>
+</helmet>
+
+<nav style="position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:16px 40px;background:#0E0B0A;border-bottom:3px solid #E8171B">
+  <a href="Principal.dc.html" style="font:700 22px 'Corben',serif;color:#F0B31A">Q.T.</a>
+  <div style="display:flex;gap:28px;font:400 15px 'Anton',sans-serif;letter-spacing:.12em;text-transform:uppercase">
+    <a href="Principal.dc.html" style="color:#F6F1E7">Principal</a>
+    <a href="Biblioteca.dc.html" style="color:#F6F1E7;border-bottom:2px solid #F0B31A">Biblioteca</a>
+    <a href="Contacto.dc.html" style="color:#F6F1E7">Contacto</a>
+  </div>
+</nav>
+
+<sc-if value="{{ onShelf }}" hint-placeholder-val="{{ true }}">
+  <main data-screen-label="Biblioteca · Estantería" style="min-height:100vh;display:flex;flex-direction:column">
+    <header style="background:#F0B31A;padding:120px 40px 48px;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:24px">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font:700 13px 'Courier Prime',monospace;letter-spacing:.25em;text-transform:uppercase">Video Archives · Sección Q</div>
+        <h1 data-shelf-title style="margin:0;font:700 clamp(56px,9vw,150px)/.86 'Corben',serif;color:#E8171B;text-shadow:5px 5px 0 #0E0B0A;text-transform:uppercase">La biblioteca</h1>
+      </div>
+      <p style="margin:0;font:400 18px/1.45 'Courier Prime',monospace;max-width:360px">Acércate a una cinta para sacarla del estante. Haz clic para ver la ficha.</p>
+    </header>
+    <section style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;padding:72px 40px 0;overflow-x:auto">
+      <div style="display:flex;align-items:flex-end;gap:6px;justify-content:center;min-width:max-content;margin:0 auto">
+        <sc-for list="{{ films }}" as="f" hint-placeholder-count="10">
+          <div data-spine="{{ f.id }}" onMouseEnter="{{ pullOut }}" onMouseLeave="{{ pushIn }}" onClick="{{ open }}" role="button" aria-label="{{ f.title }}" style="position:relative;height:clamp(360px,60vh,600px);aspect-ratio:86/631;cursor:pointer;box-shadow:4px 0 0 rgba(0,0,0,.35);border-radius:3px 3px 0 0;overflow:hidden;background:{{ f.color }}">
+            <sc-if value="{{ f.hasSpine }}" hint-placeholder-val="{{ true }}">
+              <img src="{{ f.spine }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block">
+            </sc-if>
+            <sc-if value="{{ f.noSpine }}" hint-placeholder-val="{{ false }}">
+              <div style="width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:14px 0;color:{{ f.ink }}">
+                <span style="font:700 10px 'Courier Prime',monospace;letter-spacing:.1em">{{ f.year }}</span>
+                <span style="writing-mode:vertical-rl;transform:rotate(180deg);font:400 clamp(26px,3.4vh,40px)/1 'Anton',sans-serif;text-transform:uppercase;letter-spacing:.03em">{{ f.title }}</span>
+                <span style="font:700 11px 'Anton',sans-serif;border:2px solid currentColor;padding:2px 4px">VHS</span>
+              </div>
+            </sc-if>
+            <div data-spine-tag style="position:absolute;left:0;right:0;top:0;padding:6px 0;background:#0E0B0A;color:#F0B31A;font:700 11px 'Courier Prime',monospace;text-align:center;opacity:0">VER →</div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="height:28px;background:#0E0B0A;margin:0 -40px;box-shadow:0 -6px 0 #2a2220"></div>
+      <div style="display:flex;justify-content:space-between;padding:18px 0 28px;font:700 12px 'Courier Prime',monospace;letter-spacing:.2em;text-transform:uppercase;color:#0E0B0A">
+        <span>10 cintas · 1992–2019</span><span>Rebobinar antes de devolver</span>
+      </div>
+    </section>
+  </main>
+</sc-if>
+
+<sc-if value="{{ inDetail }}" hint-placeholder-val="{{ false }}">
+  <main data-screen-label="Biblioteca · Ficha" data-detail style="min-height:100vh;background:#0E0B0A;color:#F6F1E7;padding:110px 40px 48px;display:flex;flex-direction:column;gap:48px">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;font:700 13px 'Courier Prime',monospace;letter-spacing:.2em;text-transform:uppercase">
+      <button onClick="{{ close }}" style="background:#F0B31A;color:#0E0B0A;border:0;padding:12px 18px;font:inherit;letter-spacing:inherit;cursor:pointer" style-hover="background:#F6F1E7">← Volver al estante</button>
+      <span style="color:#E8171B">Película nº {{ cur.num }} · {{ cur.year }}</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:56px;align-items:start;max-width:1320px">
+      <div data-d-poster style="max-width:460px;width:100%;aspect-ratio:2/3;border:4px solid #F0B31A;box-shadow:14px 14px 0 #E8171B;overflow:hidden;background:#1a1513">
+        <sc-if value="{{ cur.hasPoster }}" hint-placeholder-val="{{ true }}">
+          <img src="{{ cur.poster }}" alt="{{ cur.title }}" style="width:100%;height:100%;object-fit:cover;display:block">
+        </sc-if>
+        <sc-if value="{{ cur.noPoster }}" hint-placeholder-val="{{ false }}">
+          <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:repeating-linear-gradient(45deg,#1a1513 0 10px,#241c19 10px 20px);font:400 14px 'Courier Prime',monospace;color:#F0B31A">póster: {{ cur.title }}</div>
+        </sc-if>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:32px">
+        <h1 data-d-in style="margin:0;font:700 clamp(48px,6.4vw,110px)/.9 'Corben',serif;color:#F0B31A;text-transform:uppercase;text-wrap:balance">{{ cur.title }}</h1>
+        <div data-d-in style="display:flex;flex-wrap:wrap;gap:10px;font:400 16px 'Anton',sans-serif;letter-spacing:.1em;text-transform:uppercase">
+          <span style="background:#E8171B;padding:6px 12px">{{ cur.year }}</span>
+          <span style="background:#E8171B;padding:6px 12px">{{ cur.runtime }} min</span>
+          <span style="background:#E8171B;padding:6px 12px">{{ cur.genre }}</span>
+        </div>
+        <p data-d-in style="margin:0;font:400 clamp(18px,1.5vw,22px)/1.5 'Courier Prime',monospace;max-width:640px;text-wrap:pretty">{{ cur.synopsis }}</p>
+        <div data-d-in style="display:flex;flex-direction:column;gap:12px">
+          <div style="font:700 13px 'Courier Prime',monospace;letter-spacing:.25em;text-transform:uppercase;color:#E8171B">Reparto</div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:0 24px">
+            <sc-for list="{{ cur.cast }}" as="a" hint-placeholder-count="6">
+              <div style="padding:10px 0;border-bottom:1px solid #3a2f2b;font:400 22px 'Anton',sans-serif;text-transform:uppercase;letter-spacing:.03em">{{ a }}</div>
+            </sc-for>
+          </div>
+        </div>
+        <div data-d-in style="background:#F0B31A;color:#0E0B0A;padding:20px 24px;display:flex;flex-direction:column;gap:8px;max-width:640px">
+          <div style="font:700 12px 'Courier Prime',monospace;letter-spacing:.25em;text-transform:uppercase">Detalle</div>
+          <div style="font:700 19px/1.4 'Corben',serif">{{ cur.note }}</div>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:2px solid #E8171B;padding-top:24px">
+      <button onClick="{{ prev }}" style="background:none;border:0;color:#F6F1E7;font:400 clamp(20px,2vw,28px) 'Anton',sans-serif;text-transform:uppercase;cursor:pointer;padding:0" style-hover="color:#F0B31A">← {{ prevTitle }}</button>
+      <button onClick="{{ next }}" style="background:none;border:0;color:#F6F1E7;font:400 clamp(20px,2vw,28px) 'Anton',sans-serif;text-transform:uppercase;cursor:pointer;padding:0" style-hover="color:#F0B31A">{{ nextTitle }} →</button>
+    </div>
+  </main>
+</sc-if>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;pullDistance&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:48,&quot;min&quot;:16,&quot;max&quot;:120,&quot;step&quot;:4,&quot;unit&quot;:&quot;px&quot;,&quot;tsType&quot;:&quot;number&quot;}}">
+const FILMS = [
+  { id: 'reservoir', year: 1992, title: 'Reservoir Dogs', runtime: 99, genre: 'Crimen', num: '01', spine: 'vhs-reservoir', poster: 'p-reservoir',
+    cast: ['Harvey Keitel', 'Tim Roth', 'Michael Madsen', 'Steve Buscemi', 'Chris Penn', 'Lawrence Tierney'],
+    synopsis: 'Seis criminales con nombres de colores asaltan una joyería. El golpe sale mal y los supervivientes se encierran en un almacén convencidos de que uno de ellos es policía.',
+    note: 'Su debut como director. Tarantino interpreta a Mr. Brown.' },
+  { id: 'pulp', year: 1994, title: 'Pulp Fiction', runtime: 154, genre: 'Crimen', num: '02', spine: 'vhs-pulp', poster: 'p-pulp-dance',
+    cast: ['John Travolta', 'Samuel L. Jackson', 'Uma Thurman', 'Bruce Willis', 'Ving Rhames', 'Harvey Keitel'],
+    synopsis: 'Dos sicarios, la esposa de un gánster, un boxeador que debe perder un combate y una pareja de atracadores. Historias de Los Ángeles contadas fuera de orden.',
+    note: 'Palma de Oro en Cannes y Óscar al mejor guion original.' },
+  { id: 'jackie', year: 1997, title: 'Jackie Brown', runtime: 154, genre: 'Crimen', num: '03', color: '#F0B31A', ink: '#0E0B0A', poster: null,
+    cast: ['Pam Grier', 'Samuel L. Jackson', 'Robert Forster', 'Bridget Fonda', 'Michael Keaton', 'Robert De Niro'],
+    synopsis: 'Una azafata atrapada entre la policía y un traficante de armas planea quedarse con medio millón de dólares.',
+    note: 'Adaptación de la novela Rum Punch de Elmore Leonard.' },
+  { id: 'kb1', year: 2003, title: 'Kill Bill: Vol. 1', runtime: 111, genre: 'Acción', num: '04', spine: 'vhs-kb1', poster: 'p-killbill',
+    cast: ['Uma Thurman', 'Lucy Liu', 'Vivica A. Fox', 'Daryl Hannah', 'Sonny Chiba', 'Michael Madsen'],
+    synopsis: 'La Novia despierta de un coma de cuatro años y empieza a tachar nombres de su lista. Primero Tokio.',
+    note: 'Tarantino la cuenta junto a Vol. 2 como su cuarta película.' },
+  { id: 'kb2', year: 2004, title: 'Kill Bill: Vol. 2', runtime: 137, genre: 'Acción', num: '04', spine: 'vhs-kb2', poster: 'p-killbill2',
+    cast: ['Uma Thurman', 'David Carradine', 'Michael Madsen', 'Daryl Hannah', 'Gordon Liu'],
+    synopsis: 'La Novia sigue su venganza por el desierto de Texas y México hasta llegar a Bill.',
+    note: 'Gordon Liu interpreta al maestro Pai Mei.' },
+  { id: 'deathproof', year: 2007, title: 'Death Proof', runtime: 113, genre: 'Terror', num: '05', color: '#0E0B0A', ink: '#F0B31A', poster: null,
+    cast: ['Kurt Russell', 'Rosario Dawson', 'Zoë Bell', 'Rose McGowan', 'Tracie Thoms', 'Vanessa Ferlito'],
+    synopsis: 'Stuntman Mike persigue mujeres con un coche preparado para sobrevivir a cualquier choque. Hasta que elige al grupo equivocado.',
+    note: 'Estrenada como parte del programa doble Grindhouse con Robert Rodriguez.' },
+  { id: 'inglourious', year: 2009, title: 'Inglourious Basterds', runtime: 153, genre: 'Bélica', num: '06', spine: 'vhs-inglourious', poster: 'p-inglourious',
+    cast: ['Brad Pitt', 'Christoph Waltz', 'Mélanie Laurent', 'Diane Kruger', 'Michael Fassbender', 'Eli Roth', 'Daniel Brühl'],
+    synopsis: 'En la Francia ocupada, un comando de soldados judíos estadounidenses y una dueña de cine planean, por separado, acabar con la cúpula nazi.',
+    note: 'Christoph Waltz ganó el Óscar como Hans Landa.' },
+  { id: 'django', year: 2012, title: 'Django Unchained', runtime: 165, genre: 'Western', num: '07', spine: 'vhs-django', poster: 'p-django',
+    cast: ['Jamie Foxx', 'Christoph Waltz', 'Leonardo DiCaprio', 'Kerry Washington', 'Samuel L. Jackson'],
+    synopsis: 'Un cazarrecompensas alemán libera a un esclavo y lo convierte en su socio. Juntos van a rescatar a su esposa de una plantación de Mississippi.',
+    note: 'Segundo Óscar al mejor guion original para Tarantino.' },
+  { id: 'hateful', year: 2015, title: 'The Hateful Eight', runtime: 168, genre: 'Western', num: '08', color: '#F6F1E7', ink: '#E8171B', poster: null,
+    cast: ['Samuel L. Jackson', 'Kurt Russell', 'Jennifer Jason Leigh', 'Walton Goggins', 'Tim Roth', 'Michael Madsen', 'Bruce Dern'],
+    synopsis: 'Una ventisca deja a ocho desconocidos encerrados en una mercería de Wyoming. Nadie es quien dice ser.',
+    note: 'Ennio Morricone ganó el Óscar a la mejor banda sonora.' },
+  { id: 'ouatih', year: 2019, title: 'Once Upon a Time in Hollywood', runtime: 161, genre: 'Comedia dramática', num: '09', spine: 'vhs-ouatih', poster: 'p-ouatih',
+    cast: ['Leonardo DiCaprio', 'Brad Pitt', 'Margot Robbie', 'Al Pacino', 'Margaret Qualley', 'Kurt Russell'],
+    synopsis: 'Los Ángeles, 1969. Un actor de westerns en declive y su doble de acción intentan seguir a flote mientras Hollywood cambia.',
+    note: 'Brad Pitt ganó el Óscar como Cliff Booth.' }
+];
+class Component extends DCLogic {
+  state = { sel: null };
+  componentDidMount() {
+    const fromHash = () => { const id = location.hash.slice(1); this.setState({ sel: FILMS.some(f => f.id === id) ? id : null }); };
+    fromHash(); this.onHash = fromHash; addEventListener('hashchange', fromHash);
+    this.wait = setInterval(() => { if (window.gsap) { clearInterval(this.wait); this.animate(); } }, 60);
+  }
+  componentWillUnmount() { clearInterval(this.wait); removeEventListener('hashchange', this.onHash); }
+  componentDidUpdate(_, ps) { if (ps.sel !== this.state.sel && window.gsap) { scrollTo(0, 0); requestAnimationFrame(() => this.animate()); } }
+  animate() {
+    const g = window.gsap;
+    if (this.state.sel) {
+      g.fromTo('[data-d-poster]', { clipPath: 'inset(0% 0% 100% 0%)', rotate: -3 }, { clipPath: 'inset(0% 0% 0% 0%)', rotate: 0, duration: 1, ease: 'power4.out' });
+      g.fromTo('[data-d-in]', { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: .8, stagger: .08, ease: 'power3.out', delay: .15 });
+    } else {
+      g.fromTo('[data-spine]', { yPercent: 105 }, { yPercent: 0, duration: 1, stagger: .06, ease: 'power4.out' });
+      g.fromTo('[data-shelf-title]', { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: .9, ease: 'power4.out' });
+    }
+  }
+  go(id) { if (id) history.replaceState(null, '', '#' + id); else history.replaceState(null, '', location.pathname + location.search); this.setState({ sel: id }); }
+  renderVals() {
+    const g = window.gsap;
+    const idx = FILMS.findIndex(f => f.id === this.state.sel);
+    const c = FILMS[idx] || FILMS[0];
+    const lift = this.props.pullDistance ?? 48;
+    return {
+      onShelf: idx < 0, inDetail: idx >= 0,
+      films: FILMS.map(f => ({ ...f, spine: f.spine ? 'assets/' + f.spine + '.png' : '', hasSpine: !!f.spine, noSpine: !f.spine, color: f.color || '#0E0B0A', ink: f.ink || '#F0B31A' })),
+      cur: { ...c, poster: c.poster ? 'assets/' + c.poster + '.png' : '', hasPoster: !!c.poster, noPoster: !c.poster },
+      prevTitle: FILMS[(idx - 1 + FILMS.length) % FILMS.length].title,
+      nextTitle: FILMS[(idx + 1) % FILMS.length].title,
+      pullOut: e => { if (!g) return; g.to(e.currentTarget, { y: -lift, rotate: -1.5, duration: .45, ease: 'back.out(2)' }); g.to(e.currentTarget.querySelector('[data-spine-tag]'), { opacity: 1, duration: .2 }); },
+      pushIn: e => { if (!g) return; g.to(e.currentTarget, { y: 0, rotate: 0, duration: .5, ease: 'power3.out' }); g.to(e.currentTarget.querySelector('[data-spine-tag]'), { opacity: 0, duration: .2 }); },
+      open: e => {
+        const el = e.currentTarget, id = el.getAttribute('data-spine');
+        if (!g) return this.go(id);
+        g.to(el, { y: -innerHeight, duration: .5, ease: 'power3.in', onComplete: () => this.go(id) });
+      },
+      close: () => this.go(null),
+      prev: () => this.go(FILMS[(idx - 1 + FILMS.length) % FILMS.length].id),
+      next: () => this.go(FILMS[(idx + 1) % FILMS.length].id)
+    };
+  }
+}
+
+</script>
+</body>
+</html>

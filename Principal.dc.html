@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Corben:wght@400;700&amp;family=Courier+Prime:wght@400;700&amp;display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+html,body{margin:0;background:#0E0B0A;color:#F6F1E7;-webkit-font-smoothing:antialiased;overflow-x:clip;height:auto}
+*{box-sizing:border-box}
+a{color:#F0B31A;text-decoration:none}
+a:hover{color:#F6F1E7}
+::selection{background:#F0B31A;color:#0E0B0A}
+@media (hover:hover){body{cursor:none}a,button{cursor:none}}
+</style>
+</helmet>
+
+<div data-cursor="" style="position:fixed;left:0;top:0;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:#F0B31A;pointer-events:none;z-index:200;mix-blend-mode:difference;display:flex;align-items:center;justify-content:center">
+  <span data-cursor-label="" style="font:700 3px 'Courier Prime',monospace;color:#0E0B0A;opacity:0;letter-spacing:.05em"></span>
+</div>
+
+<div data-preloader="" style="position:fixed;inset:0;z-index:150;background:#0E0B0A;display:flex;flex-direction:column;justify-content:space-between;padding:32px 40px;overflow:hidden">
+  <div style="display:flex;justify-content:space-between;font:700 13px 'Courier Prime',monospace;letter-spacing:.2em;text-transform:uppercase;color:#F6F1E7">
+    <span>Presentando a…</span><span>Rollo 1 / 1</span>
+  </div>
+  <div data-counter="" style="font:700 clamp(120px,24vw,360px)/.8 'Corben',serif;color:#F0B31A;align-self:flex-end">0</div>
+  <div data-pl-y="" style="position:absolute;inset:0;background:#F0B31A;transform:translateY(100%)"></div>
+  <div data-pl-r="" style="position:absolute;inset:0;background:#E8171B;transform:translateY(100%)"></div>
+</div>
+
+<nav style="position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:16px 40px;background:#0E0B0A;border-bottom:3px solid #E8171B">
+  <a href="Principal.dc.html" style="font:700 22px 'Corben',serif;color:#F0B31A">Q.T.</a>
+  <div style="display:flex;gap:28px;font:400 15px 'Anton',sans-serif;letter-spacing:.12em;text-transform:uppercase">
+    <a href="Principal.dc.html" style="color:#F6F1E7;border-bottom:2px solid #F0B31A">Principal</a>
+    <a href="Biblioteca.dc.html" style="color:#F6F1E7">Biblioteca</a>
+    <a href="Contacto.dc.html" style="color:#F6F1E7">Contacto</a>
+  </div>
+</nav>
+
+<section data-screen-label="01 Hero" data-hero="" style="position: relative; height: 100vh; min-height: 640px; overflow: hidden; background-color: #FE0000">
+  <div data-hero-img="" style="position:absolute;right:4vw;bottom:0;height:94vh;aspect-ratio:736/1012;max-width:70vw;clip-path:inset(0 0 0 0)">
+    <img src="assets/qt-face.png" alt="Quentin Tarantino" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block">
+  </div>
+  <div data-hero-title="" style="position:absolute;left:40px;right:40px;bottom:6vh;z-index:2;display:flex;flex-direction:column;gap:12px">
+    <div data-split="" style="white-space:nowrap;font:700 clamp(14px,1.6vw,22px) 'Corben',serif;color:#0E0B0A;letter-spacing:.06em;text-transform:uppercase;overflow:hidden">Presentando a</div>
+    <h1 style="margin:0;font:700 clamp(48px,11.5vw,210px)/.86 'Corben',serif;color:#F0B31A;text-shadow:6px 6px 0 #0E0B0A;text-transform:uppercase">
+      <div data-split="" style="overflow: hidden; padding-bottom: .06em; white-space: nowrap; width: 511px; height: 88px">Quentin</div>
+      <div data-split="" style="overflow: hidden; padding-bottom: .06em; white-space: nowrap; width: 531px; height: 69px">Tarantino</div>
+    </h1>
+  </div>
+  <div data-hero-hint="" style="position:absolute;left:50%;bottom:22px;transform:translateX(-50%);font:700 12px 'Courier Prime',monospace;letter-spacing:.3em;color:#0E0B0A;text-transform:uppercase">Scroll ↓</div>
+</section>
+
+<section data-screen-label="02 Intro" style="background:#F0B31A;color:#0E0B0A;padding:18vh 40px">
+  <div style="max-width:1200px;display:flex;flex-direction:column;gap:48px">
+    <div style="font:700 13px 'Courier Prime',monospace;letter-spacing:.25em;text-transform:uppercase">Capítulo uno · El hombre del videoclub</div>
+    <p data-words="" style="margin:0;font:700 clamp(30px,4.6vw,72px)/1.08 'Corben',serif;text-wrap:pretty">Nacido en Knoxville, Tennessee, en 1963. Trabajó en un videoclub de Manhattan Beach, vio todo lo que había en las estanterías y en 1992 estrenó su primera película.</p>
+    <div style="display:flex;gap:40px;flex-wrap:wrap;font:400 clamp(18px,1.6vw,24px)/1.4 'Courier Prime',monospace;max-width:900px">
+      <span style="flex:1 1 320px">Guionista y director. Dos Óscar al mejor guion original: Pulp Fiction y Django Unchained.</span>
+      <span style="flex:1 1 320px">Palma de Oro en Cannes, 1994. Ha dicho que dirigirá diez películas y se retirará.</span>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="03 Timeline" data-tl="" style="position:relative;height:100vh;background:#0E0B0A;overflow:hidden">
+  <div data-tl-track="" style="position:absolute;top:0;left:0;height:100%;display:flex;align-items:center;gap:6vw;padding:0 10vw 0 40px;will-change:transform">
+    <div style="flex:0 0 auto;width:min(560px,80vw);display:flex;flex-direction:column;gap:24px">
+      <div style="font:700 13px 'Courier Prime',monospace;letter-spacing:.25em;text-transform:uppercase;color:#E8171B">Filmografía</div>
+      <h2 style="margin:0;font:700 clamp(64px,9vw,150px)/.88 'Corben',serif;color:#F0B31A;text-transform:uppercase">1992<br>— hoy</h2>
+      <p style="margin:0;font:400 20px/1.45 'Courier Prime',monospace;color:#F6F1E7;max-width:420px">Nueve películas y una por venir. Sigue bajando.</p>
+    </div>
+    <sc-for list="{{ films }}" as="f" hint-placeholder-count="10">
+      <a href="{{ f.href }}" data-tl-card="" data-hover="VER" style="flex:0 0 auto;width:clamp(240px,24vw,340px);display:flex;flex-direction:column;gap:14px;color:#F6F1E7">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid #E8171B;padding-bottom:8px">
+          <span data-tl-year="" style="font:700 clamp(54px,6vw,88px)/.9 'Corben',serif;color:#F0B31A">{{ f.year }}</span>
+          <span style="font:700 12px 'Courier Prime',monospace;letter-spacing:.2em;color:#E8171B">Nº {{ f.num }}</span>
+        </div>
+        <div data-tl-img="" style="aspect-ratio:2/3;overflow:hidden;background:#1a1513;border:3px solid #F0B31A;box-shadow:10px 10px 0 #E8171B">
+          <sc-if value="{{ f.hasPoster }}" hint-placeholder-val="{{ true }}">
+            <img src="{{ f.poster }}" alt="{{ f.title }}" style="width:100%;height:100%;object-fit:cover;display:block">
+          </sc-if>
+          <sc-if value="{{ f.noPoster }}" hint-placeholder-val="{{ false }}">
+            <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;padding:20px;text-align:center;background:repeating-linear-gradient(45deg,#1a1513 0 10px,#241c19 10px 20px);font:400 13px 'Courier Prime',monospace;color:#F0B31A">póster: {{ f.title }}</div>
+          </sc-if>
+        </div>
+        <div style="font:400 clamp(22px,2vw,30px)/1.05 'Anton',sans-serif;text-transform:uppercase;letter-spacing:.02em">{{ f.title }}</div>
+      </a>
+    </sc-for>
+    <div data-tl-card="" style="flex:0 0 auto;width:clamp(240px,24vw,340px);display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid #E8171B;padding-bottom:8px">
+        <span style="font:700 clamp(54px,6vw,88px)/.9 'Corben',serif;color:#F0B31A">20??</span>
+        <span style="font:700 12px 'Courier Prime',monospace;letter-spacing:.2em;color:#E8171B">Nº 10</span>
+      </div>
+      <div data-tl-img="" style="aspect-ratio:2/3;background:#E8171B;border:3px solid #F0B31A;display:flex;align-items:center;justify-content:center">
+        <span style="font:700 160px 'Corben',serif;color:#F0B31A;text-shadow:6px 6px 0 #0E0B0A">?</span>
+      </div>
+      <div style="font:400 clamp(22px,2vw,30px)/1.05 'Anton',sans-serif;text-transform:uppercase;color:#F6F1E7">La décima</div>
+    </div>
+  </div>
+  <div style="position:absolute;left:40px;right:40px;bottom:32px;height:3px;background:#2a2220">
+    <div data-tl-progress="" style="height:100%;width:100%;background:#E8171B;transform-origin:left;transform:scaleX(0)"></div>
+  </div>
+</section>
+
+<section data-screen-label="04 Cierre" style="background:#E8171B;overflow:hidden">
+  <div style="background:#0E0B0A;padding:18px 0;overflow:hidden;white-space:nowrap">
+    <div data-marquee="" style="display:inline-flex;gap:48px;font:700 clamp(22px,2.4vw,36px) 'Corben',serif;color:#F0B31A;text-transform:uppercase">
+      <span>Written and directed by Quentin Tarantino ✦</span><span>Written and directed by Quentin Tarantino ✦</span><span>Written and directed by Quentin Tarantino ✦</span><span>Written and directed by Quentin Tarantino ✦</span>
+    </div>
+  </div>
+  <div style="padding:16vh 40px;display:flex;flex-direction:column;gap:40px;align-items:flex-start">
+    <div style="font:700 13px 'Courier Prime',monospace;letter-spacing:.25em;text-transform:uppercase;color:#0E0B0A">Siguiente rollo</div>
+    <a href="Biblioteca.dc.html" data-hover="ENTRAR" style="font:700 clamp(56px,10vw,170px)/.9 'Corben',serif;color:#F0B31A;text-shadow:6px 6px 0 #0E0B0A;text-transform:uppercase" style-hover="color:#F6F1E7">La biblioteca →</a>
+    <p style="margin:0;font:400 20px/1.45 'Courier Prime',monospace;color:#0E0B0A;max-width:520px">Las cintas VHS de cada película, con reparto, duración y detalles.</p>
+  </div>
+  <footer style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;padding:24px 40px;border-top:2px solid #0E0B0A;font:700 12px 'Courier Prime',monospace;letter-spacing:.2em;text-transform:uppercase;color:#0E0B0A">
+    <span>Sitio de fans · Sin afiliación oficial</span><a href="Contacto.dc.html" style="color:#0E0B0A">Contacto</a>
+  </footer>
+</section>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showPreloader&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;customCursor&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  componentDidMount() {
+    this.wait = setInterval(() => {
+      if (window.gsap && window.ScrollTrigger && document.querySelector('[data-tl-card]')) { clearInterval(this.wait); this.init(); }
+    }, 60);
+  }
+  componentWillUnmount() { clearInterval(this.wait); this.ctx && this.ctx.revert(); this.off && this.off(); }
+  split(el, mode) {
+    const txt = el.textContent.trim(); el.textContent = '';
+    const parts = mode === 'words' ? txt.split(' ') : [...txt];
+    return parts.map((p, i) => {
+      const s = document.createElement('span');
+      s.textContent = p === ' ' ? '\u00a0' : p;
+      s.style.display = 'inline-block';
+      el.appendChild(s);
+      if (mode === 'words' && i < parts.length - 1) el.appendChild(document.createTextNode(' '));
+      return s;
+    });
+  }
+  init() {
+    const g = window.gsap, ST = window.ScrollTrigger; g.registerPlugin(ST);
+    const b = document.body;
+    if (getComputedStyle(b).overflowY !== 'visible' && b.scrollHeight > b.clientHeight + 4) ST.defaults({ scroller: b });
+    const q = s => document.querySelector(s), qa = s => [...document.querySelectorAll(s)];
+    const usePre = this.props.showPreloader ?? true;
+    // cursor
+    const cur = q('[data-cursor]'), lab = q('[data-cursor-label]');
+    if (this.props.customCursor === false || !matchMedia('(hover:hover)').matches) { cur.style.display = 'none'; document.body.style.cursor = 'auto'; }
+    const xTo = g.quickTo(cur, 'x', { duration: .35, ease: 'power3' }), yTo = g.quickTo(cur, 'y', { duration: .35, ease: 'power3' });
+    const mm = e => { xTo(e.clientX); yTo(e.clientY); };
+    const ov = e => {
+      const t = e.target.closest('a,button,[data-hover]');
+      const txt = t ? (t.getAttribute('data-hover') || '') : '';
+      g.to(cur, { scale: t ? (txt ? 6 : 2.4) : 1, duration: .3 });
+      lab.textContent = txt; g.to(lab, { opacity: txt ? 1 : 0, duration: .2 });
+    };
+    addEventListener('mousemove', mm); addEventListener('mouseover', ov);
+    this.off = () => { removeEventListener('mousemove', mm); removeEventListener('mouseover', ov); };
+
+    this.ctx = g.context(() => {
+      const chars = qa('[data-split]').map(el => this.split(el)).flat();
+      g.set(chars, { yPercent: 110 });
+      const img = q('[data-hero-img]');
+      g.set(img, { clipPath: 'inset(100% 0% 0% 0%)' });
+      g.set(img.firstElementChild, { scale: 1.3 });
+      const tl = g.timeline();
+      if (usePre) {
+        const c = { v: 0 }, cn = q('[data-counter]');
+        tl.to(c, { v: 100, duration: 2, ease: 'power2.inOut', onUpdate: () => cn.textContent = Math.round(c.v) })
+          .to('[data-pl-y]', { y: '0%', duration: .6, ease: 'power4.inOut' })
+          .to('[data-pl-r]', { y: '0%', duration: .6, ease: 'power4.inOut' }, '-=.4')
+          .to('[data-preloader]', { yPercent: -100, duration: .8, ease: 'power4.inOut' });
+      } else g.set('[data-preloader]', { display: 'none' });
+      tl.to(img, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.2, ease: 'power4.out' }, '-=.4')
+        .to(img.firstElementChild, { scale: 1, duration: 1.6, ease: 'power3.out' }, '<')
+        .to(chars, { yPercent: 0, duration: .9, ease: 'power4.out', stagger: .035 }, '<.2')
+        .from('[data-hero-hint]', { opacity: 0, y: 10, duration: .5 }, '-=.3');
+
+      g.to(img, { yPercent: 12, ease: 'none', scrollTrigger: { trigger: '[data-hero]', start: 'top top', end: 'bottom top', scrub: true } });
+      g.to('[data-hero-title]', { yPercent: -40, opacity: .2, ease: 'none', scrollTrigger: { trigger: '[data-hero]', start: 'top top', end: 'bottom top', scrub: true } });
+
+      const words = this.split(q('[data-words]'), 'words');
+      g.fromTo(words, { opacity: .12 }, { opacity: 1, stagger: .1, ease: 'none', scrollTrigger: { trigger: '[data-words]', start: 'top 80%', end: 'bottom 45%', scrub: true } });
+
+      const track = q('[data-tl-track]');
+      const dist = () => track.scrollWidth - innerWidth;
+      const hz = g.to(track, { x: () => -dist(), ease: 'none', scrollTrigger: { trigger: '[data-tl]', pin: true, start: 'top top', end: () => '+=' + dist(), scrub: 1, invalidateOnRefresh: true } });
+      g.to('[data-tl-progress]', { scaleX: 1, ease: 'none', scrollTrigger: { trigger: '[data-tl]', start: 'top top', end: () => '+=' + dist(), scrub: true } });
+      qa('[data-tl-card]').forEach(card => {
+        const im = card.querySelector('[data-tl-img]');
+        g.from(im, { clipPath: 'inset(0% 0% 100% 0%)', rotate: -4, duration: 1, ease: 'power4.out', scrollTrigger: { trigger: card, containerAnimation: hz, start: 'left 85%', toggleActions: 'play none none reverse' } });
+        g.from(card.querySelector('[data-tl-year]') || card.firstElementChild, { yPercent: 60, opacity: 0, duration: .8, ease: 'power3.out', scrollTrigger: { trigger: card, containerAnimation: hz, start: 'left 85%', toggleActions: 'play none none reverse' } });
+      });
+      g.to('[data-marquee]', { xPercent: -50, duration: 22, ease: 'none', repeat: -1 });
+    });
+  }
+  renderVals() {
+    const F = [
+      ['reservoir', 1992, 'Reservoir Dogs', 'p-reservoir'], ['pulp', 1994, 'Pulp Fiction', 'p-pulp-dance'],
+      ['jackie', 1997, 'Jackie Brown', null], ['kb1', 2003, 'Kill Bill: Vol. 1', 'p-killbill'],
+      ['kb2', 2004, 'Kill Bill: Vol. 2', 'p-killbill2'], ['deathproof', 2007, 'Death Proof', null],
+      ['inglourious', 2009, 'Inglourious Basterds', 'p-inglourious'], ['django', 2012, 'Django Unchained', 'p-django'],
+      ['hateful', 2015, 'The Hateful Eight', null], ['ouatih', 2019, 'Once Upon a Time in Hollywood', 'p-ouatih']
+    ];
+    return {
+      films: F.map(([id, year, title, p], i) => ({
+        id, year, title, num: '0' + [1, 2, 3, 4, 4, 5, 6, 7, 8, 9][i], href: 'Biblioteca.dc.html#' + id,
+        poster: p ? 'assets/' + p + '.png' : '', hasPoster: !!p, noPoster: !p
+      }))
+    };
+  }
+}
+
+</script>
+</body>
+</html>
