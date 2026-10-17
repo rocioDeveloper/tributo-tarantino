@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Tarantino · Página tributo
 
 Sitio web tributo a Quentin Tarantino. Es un proyecto de aprendizaje para entender cómo trabajar con IA, TypeScript, GSAP y Vite, y cómo construir un frontend optimizado. El foco principal está en las animaciones de GSAP y en cómo integrarlas en una interfaz real.
@@ -79,3 +80,7 @@ Abre `http://localhost:8000/Principal.dc.html`.
 
 Esta es una página tributo sin ánimo de lucro, hecha con fines educativos. No tiene relación oficial con Quentin Tarantino ni con ningún estudio. Todos los derechos sobre las películas, imágenes, pósters, títulos y marcas pertenecen a sus respectivos propietarios.
 
+=======
+# tributo-tarantino
+Sitio web tributo a Quentin Tarantino. Es un proyecto de aprendizaje para entender cómo trabajar con IA, TypeScript, GSAP y Vite, y cómo construir un frontend optimizado. El foco principal está en las animaciones de GSAP y en cómo integrarlas en una interfaz real.
+>>>>>>> 908a93bb66eb742b0c9f7045cbec5eac3dcf2107
