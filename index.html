@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quentin Tarantino · Página tributo</title>
+  <meta name="description" content="Página tributo a Quentin Tarantino: filmografía, biblioteca VHS y premios.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Corben:wght@400;700&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="preloader" data-preloader>
+    <div class="preloader__top"><span>Presentando a…</span><span>Rollo 1 / 1</span></div>
+    <div class="preloader__count" data-counter>0</div>
+    <div class="preloader__wipe preloader__wipe--y" data-wipe-y></div>
+    <div class="preloader__wipe preloader__wipe--r" data-wipe-r></div>
+  </div>
+
+  <nav class="nav">
+    <a class="nav__logo" href="./index.html">Q.T.</a>
+    <div class="nav__links">
+      <a href="./index.html" aria-current="page">Principal</a>
+      <a href="./biblioteca.html">Biblioteca</a>
+      <a href="./contacto.html">Contacto</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero" data-hero>
+      <div class="hero__img" data-hero-img>
+        <img src="./assets/qt-face.png" alt="Quentin Tarantino">
+      </div>
+      <div class="hero__title" data-hero-title>
+        <div class="hero__kicker" data-split>Presentando a</div>
+        <h1><span data-split>Quentin</span><span data-split>Tarantino</span></h1>
+      </div>
+      <div class="hero__hint" data-hero-hint>Scroll ↓</div>
+    </section>
+
+    <section class="intro">
+      <div class="intro__inner">
+        <div class="eyebrow">Capítulo uno · El hombre del videoclub</div>
+        <p class="intro__lead" data-words>Nacido en Knoxville, Tennessee, en 1963. Trabajó en un videoclub de Manhattan Beach, vio todo lo que había en las estanterías y en 1992 estrenó su primera película.</p>
+        <div class="intro__cols">
+          <span>Guionista y director. Dos Óscar al mejor guion original: Pulp Fiction y Django Unchained.</span>
+          <span>Palma de Oro en Cannes, 1994. Ha dicho que dirigirá diez películas y se retirará.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="timeline" data-tl>
+      <div class="timeline__track" data-tl-track>
+        <div class="timeline__intro">
+          <div class="eyebrow">Filmografía</div>
+          <h2>1992<br>— hoy</h2>
+          <p class="mono">Nueve películas y una por venir. Sigue bajando.</p>
+        </div>
+        <!-- Las tarjetas se generan desde src/data/films.ts -->
+      </div>
+      <div class="timeline__bar"><div data-tl-progress></div></div>
+    </section>
+
+    <section class="closing">
+      <div class="marquee">
+        <div class="marquee__inner" data-marquee>
+          <span>Written and directed by Quentin Tarantino ✦</span><span>Written and directed by Quentin Tarantino ✦</span>
+          <span>Written and directed by Quentin Tarantino ✦</span><span>Written and directed by Quentin Tarantino ✦</span>
+        </div>
+      </div>
+      <div class="closing__body">
+        <div class="eyebrow">Siguiente rollo</div>
+        <a class="closing__link shadow-text" href="./biblioteca.html" data-hover="ENTRAR">La biblioteca →</a>
+        <p class="mono">Las cintas VHS de cada película, con reparto, duración y detalles.</p>
+      </div>
+    </section>
+
+    <section class="credits" data-blood>
+      <div class="credits__sticky">
+        <div class="splat" data-splat="78,28"></div>
+        <div class="splat" data-splat="20,72"></div>
+        <div class="credits__content">
+          <h2><span>Written and<br>directed by</span><span>Quentin<br>Tarantino</span></h2>
+          <a class="btn" href="./biblioteca.html" data-cta>Ir a biblioteca</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>Sitio de fans · Sin afiliación oficial</span><a href="./contacto.html">Contacto</a>
+  </footer>
+
+  <script type="module" src="/src/pages/home.ts"></script>
+</body>
+</html>
