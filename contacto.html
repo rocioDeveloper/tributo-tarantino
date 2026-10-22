@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contacto · Quentin Tarantino</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Corben:wght@400;700&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="page-contacto">
+  <nav class="nav">
+    <a class="nav__logo" href="./index.html">Q.T.</a>
+    <div class="nav__links">
+      <a href="./index.html">Principal</a>
+      <a href="./biblioteca.html">Biblioteca</a>
+      <a href="./contacto.html" aria-current="page">Contacto</a>
+    </div>
+  </nav>
+
+  <main class="contact">
+    <section class="contact__left">
+      <div>
+        <div class="eyebrow" data-in>Capítulo final</div>
+        <h1 class="shadow-text"><span><span data-rise>Hable</span></span><span><span data-rise>mos.</span></span></h1>
+      </div>
+      <div class="contact__info" data-in>
+        <span>Colaboraciones, correcciones de datos o tu escena favorita. Respondemos en 48 horas.</span>
+        <a href="mailto:hola@tarantinofans.example">hola@tarantinofans.example</a>
+      </div>
+    </section>
+
+    <section class="contact__right">
+      <form class="form" data-form>
+        <label class="field" data-in>Nombre
+          <input required name="nombre" placeholder="Mr. Pink">
+        </label>
+        <label class="field" data-in>Email
+          <input required type="email" name="email" placeholder="tu@correo.com">
+        </label>
+        <div class="field" data-in>Tu película favorita
+          <div class="chips" data-chips></div>
+        </div>
+        <label class="field" data-in>Mensaje
+          <textarea required name="mensaje" rows="4" placeholder="Escribe aquí…"></textarea>
+        </label>
+        <button class="submit" data-in type="submit">Enviar →</button>
+      </form>
+
+      <div class="sent" data-sent hidden>
+        <div class="eyebrow">Mensaje recibido</div>
+        <h2>The end.</h2>
+        <p>Gracias, <span data-name></span>. Te escribiremos pronto.</p>
+        <button type="button" data-reset>Enviar otro</button>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="/src/pages/contacto.ts"></script>
+</body>
+</html>

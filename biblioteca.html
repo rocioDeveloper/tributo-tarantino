@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>La biblioteca · Quentin Tarantino</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Corben:wght@400;700&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="page-biblioteca">
+  <nav class="nav">
+    <a class="nav__logo" href="./index.html">Q.T.</a>
+    <div class="nav__links">
+      <a href="./index.html">Principal</a>
+      <a href="./biblioteca.html" aria-current="page">Biblioteca</a>
+      <a href="./contacto.html">Contacto</a>
+    </div>
+  </nav>
+
+  <!-- Vista 1: estantería -->
+  <main class="shelf-view" data-shelf-view>
+    <header class="shelf-header">
+      <div>
+        <div class="eyebrow">Video Archives · Sección Q</div>
+        <h1 data-shelf-title>La biblioteca</h1>
+      </div>
+      <p>Acércate a una cinta para sacarla del estante. Haz clic para ver la ficha.</p>
+    </header>
+    <section class="shelves">
+      <div class="eyebrow">Estante 1 · Cintas</div>
+      <div class="spines" data-spines></div>
+      <div class="plank"></div>
+      <div class="shelf-meta"><span>10 cintas · 1992–2019</span><span>Rebobinar antes de devolver</span></div>
+
+      <div class="awards">
+        <div class="eyebrow">Estante 2 · Premios</div>
+        <div data-awards></div>
+      </div>
+      <div class="shelf-meta"><span>Pasa el cursor por un premio para ver los datos</span></div>
+    </section>
+  </main>
+
+  <!-- Vista 2: ficha de película (se rellena desde TS) -->
+  <main class="detail" data-detail hidden>
+    <div class="detail__top">
+      <button class="detail__back" data-back>← Volver al estante</button>
+      <span data-d-num></span>
+    </div>
+    <div class="detail__grid">
+      <div class="detail__poster" data-d-poster></div>
+      <div class="detail__info">
+        <h1 data-d-in data-d-title></h1>
+        <div class="tags" data-d-in data-d-tags></div>
+        <p class="detail__synopsis" data-d-in data-d-synopsis></p>
+        <div class="cast" data-d-in>
+          <div class="eyebrow">Reparto</div>
+          <ul data-d-cast></ul>
+        </div>
+        <div class="note" data-d-in>
+          <div class="eyebrow">Detalle</div>
+          <div data-d-note></div>
+        </div>
+      </div>
+    </div>
+    <div class="detail__pager">
+      <button data-prev></button>
+      <button data-next></button>
+    </div>
+  </main>
+
+  <script type="module" src="/src/pages/biblioteca.ts"></script>
+</body>
+</html>
